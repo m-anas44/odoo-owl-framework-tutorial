@@ -7,7 +7,17 @@ export class Counter extends Component {
                     Counter:
                     <t t-esc="props.value"/>
                 </span>
-            <button class="btn btn-primary bg-secondary text-white" t-on-click="props.t-on-click">Increment</button>
+            <button class="btn btn-primary bg-secondary text-white" t-on-click="increment">Increment</button>
         </p>
     `;
+  static props = {
+    value: { type: Number },
+    onChange: { type: Function, optional: true },
+  };
+
+  increment() {
+    if (this.props.onChange) {
+      this.props.onChange(this.props.value);
+    }
+  }
 }
