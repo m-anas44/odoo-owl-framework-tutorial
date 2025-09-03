@@ -14,15 +14,16 @@ export class TodoList extends Component {
                 />
             </div>
             <t t-foreach="todos" t-as="todo" t-key="todo.id">
-                <TodoItem todo="todo" />
+                <TodoItem todo="todo" toggleState="toggleState"/>
             </t>
         </div>
     `;
   static components = { TodoItem };
   setup() {
     this.todos = useState([]);
+    this.toggleState = this.toggleState.bind(this)
     this.nextId = 1;
-    this.refFocusInput = useAutofocus("todoInput")
+    this.refFocusInput = useAutofocus("todoInput");
   }
 
   addTodo(ev) {
@@ -38,6 +39,13 @@ export class TodoList extends Component {
         });
         inputEl.value = "";
       }
+    }
+  }
+
+  toggleState(id) {
+    const todo = this.todos.find((t) => t.id === id);
+    if (todo) {
+      todo.isCompleted = !todo.isCompleted;
     }
   }
 }
