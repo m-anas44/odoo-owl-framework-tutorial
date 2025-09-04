@@ -10,8 +10,11 @@
             <t t-esc="state.sum"/>
         </p>
         <div class="border">
-            <Card title="'Escaped Content'" content="normalContent"/>
-            <Card title="'Markup Example'" content="markupContent"/>
+            <Card title="'Escaped Content'"/>
+            <Card title="'Markup Example'">
+                <h3>Card Text</h3>
+                <Counter value="5" onChange="incrementSum"/>
+            </Card>
         </div>
         <div>
             <TodoList />
