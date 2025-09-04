@@ -14,14 +14,15 @@ export class TodoList extends Component {
                 />
             </div>
             <t t-foreach="todos" t-as="todo" t-key="todo.id">
-                <TodoItem todo="todo" toggleState="toggleState"/>
+                <TodoItem todo="todo" toggleState="toggleState" removeTodo="removeTodo"/>
             </t>
         </div>
     `;
   static components = { TodoItem };
   setup() {
     this.todos = useState([]);
-    this.toggleState = this.toggleState.bind(this)
+    this.toggleState = this.toggleState.bind(this);
+    this.removeTodo = this.removeTodo.bind(this);
     this.nextId = 1;
     this.refFocusInput = useAutofocus("todoInput");
   }
@@ -48,4 +49,18 @@ export class TodoList extends Component {
       todo.isCompleted = !todo.isCompleted;
     }
   }
+
+  removeTodo(id) {
+    const index = this.todos.findIndex((elem)=>elem.id === id)
+    if(index >= 0) {
+      this.todos.splice(index, 1)
+    }
+  }
+  
+  // another method to do that
+  // removeTodo(id) {
+  //   const remainingTodos = this.todos.filter((todo) => todo.id !== id);
+  //   this.todos.length = 0
+  //   this.todos.push(...remainingTodos)
+  // }
 }
