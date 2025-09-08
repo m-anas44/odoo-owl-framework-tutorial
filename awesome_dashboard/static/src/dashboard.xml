@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
-
     <t t-name="awesome_dashboard.AwesomeDashboard">
-        hello dashboard
+        <Layout display="display" className="'o_dashboard h-100'">
+            <t t-set-slot="layout-buttons">
+                <button t-on-click="()=>this.getCustomers()" class="btn btn-primary">
+                    Customers
+                </button>
+                <button t-on-click="()=>this.getCrmLeads()" class="btn btn-primary">
+                    Leads
+                </button>
+            </t>
+            <t t-slot="default">
+                <div class="p-2 d-flex flex-wrap">
+                    <DashboardItem>
+                        <h5>Number of new orders this month</h5>
+                        <p class="m-0" style="font-size: 40px; font-weight: bold;" t-esc="stats.nb_new_orders"/>
+                    </DashboardItem>
+                    <DashboardItem size="2">
+                        <h5>Total amount of new orders this month</h5>
+                        <p class="m-0" style="font-size: 40px; font-weight: bold;" t-esc="stats.total_amount"/>
+                    </DashboardItem>
+                    <DashboardItem>
+                        <h5>Average amount of t-shirt by order this month</h5>
+                        <p class="m-0" style="font-size: 40px; font-weight: bold;" t-esc="stats.average_quantity"/>
+                    </DashboardItem>
+                    <DashboardItem>
+                        <h5>Number of cancelled orders this month</h5>
+                        <p class="m-0" style="font-size: 40px; font-weight: bold;" t-esc="stats.nb_cancelled_orders"/>
+                    </DashboardItem>
+                    <DashboardItem>
+                        <h5>Average time for an order to go from 'new' to 'sent' or 'cancelled'</h5>
+                        <p class="m-0" style="font-size: 40px; font-weight: bold;" t-esc="stats.average_time"/>
+                    </DashboardItem>
+                </div>
+            </t>
+        </Layout>
     </t>
-
 </templates>
