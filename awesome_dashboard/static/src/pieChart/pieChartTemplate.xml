@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+    <t t-name="awesome_dashboard.piechart">
+        <div class="d-flex justify-items-center">
+            <canvas t-ref="canvas" width="400" height="400"/>
+        </div>
+    </t>
+</template>

@@ -5,17 +5,19 @@ import { Layout } from "@web/search/layout";
 import { _t } from "@web/core/l10n/translation";
 import { useService } from "@web/core/utils/hooks";
 import { DashboardItem } from "./DashboardItem/DashboardItem";
+import { PieChart } from "./pieChart/pieChart";
 
 class AwesomeDashboard extends Component {
   static template = "awesome_dashboard.AwesomeDashboard";
-  static components = { Layout, DashboardItem };
+  static components = { Layout, DashboardItem, PieChart };
   setup() {
     this.display = { controlPanel: {} };
     this.action = useService("action");
-    this.stats = useState({});
+
     const statistics = this.env.services["awesome_dashboard.statistics"];
+    this.stats = useState(statistics.stats);
     onWillStart(async () => {
-      this.stats = await statistics.loadStatistics();
+      await statistics.loadStatistics();
     });
   }
 

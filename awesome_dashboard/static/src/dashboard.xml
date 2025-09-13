@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-name="awesome_dashboard.AwesomeDashboard">
-        <Layout display="display" className="'o_dashboard h-100'">
+        <Layout display="display" className="'o_dashboard'">
             <t t-set-slot="layout-buttons">
                 <button t-on-click="()=>this.getCustomers()" class="btn btn-primary">
                     Customers
@@ -31,6 +31,9 @@
                     <DashboardItem>
                         <h5>Average time for an order to go from 'new' to 'sent' or 'cancelled'</h5>
                         <p class="m-0" style="font-size: 40px; font-weight: bold;" t-esc="stats.average_time"/>
+                    </DashboardItem>
+                    <DashboardItem>
+                        <PieChart data="stats.orders_by_size"/>
                     </DashboardItem>
                 </div>
             </t>
