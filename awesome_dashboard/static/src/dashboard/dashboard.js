@@ -4,8 +4,8 @@ import { registry } from "@web/core/registry";
 import { Layout } from "@web/search/layout";
 import { _t } from "@web/core/l10n/translation";
 import { useService } from "@web/core/utils/hooks";
-import { DashboardItem } from "./DashboardItem/DashboardItem";
-import { PieChart } from "./pieChart/pieChart";
+import { DashboardItem } from "../DashboardItem/DashboardItem";
+import { PieChart } from "../pieChart/pieChart";
 
 class AwesomeDashboard extends Component {
   static template = "awesome_dashboard.AwesomeDashboard";
@@ -40,5 +40,5 @@ class AwesomeDashboard extends Component {
 }
 
 registry
-  .category("actions")
-  .add("awesome_dashboard.dashboard", AwesomeDashboard);
+  .category("lazy_components")
+  .add("AwesomeDashboard", AwesomeDashboard);
