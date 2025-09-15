@@ -5,7 +5,7 @@ import { LazyComponent } from "@web/core/assets";
 class DashboardAction extends Component {
   static components = { LazyComponent };
   static template = xml`
-    <LazyComponent bundle="'awesome_dashboard.dashboard_assets'" Component="'AwesomeDashboard'"/>
+    <LazyComponent bundle="'awesome_dashboard.dashboard_assets'" Component="'ViewDashboard'"/>
     `;
 }
 

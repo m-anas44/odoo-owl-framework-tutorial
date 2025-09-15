@@ -6,9 +6,10 @@ import { _t } from "@web/core/l10n/translation";
 import { useService } from "@web/core/utils/hooks";
 import { DashboardItem } from "../DashboardItem/DashboardItem";
 import { PieChart } from "../pieChart/pieChart";
+import { items } from "../DashboardItem/items";
 
 class AwesomeDashboard extends Component {
-  static template = "awesome_dashboard.AwesomeDashboard";
+  static template = "awesome_dashboard.ViewDashboard";
   static components = { Layout, DashboardItem, PieChart };
   setup() {
     this.display = { controlPanel: {} };
@@ -16,9 +17,11 @@ class AwesomeDashboard extends Component {
 
     const statistics = this.env.services["awesome_dashboard.statistics"];
     this.stats = useState(statistics.stats);
+    console.log(this.stats)
     onWillStart(async () => {
       await statistics.loadStatistics();
     });
+    this.items = items
   }
 
   async getCustomers() {
@@ -41,4 +44,4 @@ class AwesomeDashboard extends Component {
 
 registry
   .category("lazy_components")
-  .add("AwesomeDashboard", AwesomeDashboard);
+  .add("ViewDashboard", AwesomeDashboard);
