@@ -7,6 +7,7 @@ import { useService } from "@web/core/utils/hooks";
 import { DashboardItem } from "../DashboardItem/DashboardItem";
 import { PieChart } from "../pieChart/pieChart";
 import { items } from "../DashboardItem/items";
+import { dashboardItemRegistry } from "./item_registry";
 
 class AwesomeDashboard extends Component {
   static template = "awesome_dashboard.ViewDashboard";
@@ -21,7 +22,7 @@ class AwesomeDashboard extends Component {
     onWillStart(async () => {
       await statistics.loadStatistics();
     });
-    this.items = items
+    this.items = dashboardItemRegistry.getAll()
   }
 
   async getCustomers() {

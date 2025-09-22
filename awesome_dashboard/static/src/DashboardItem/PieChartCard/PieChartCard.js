@@ -3,8 +3,11 @@ import { loadJS } from "@web/core/assets";
 
 export class PieChartCard extends Component {
   static template = xml`
-    <div class="d-flex justify-items-center">
-      <canvas t-ref="canvas" width="200"/>
+    <div>
+      <h5 t-esc="props.title"/>
+      <div class="d-flex justify-items-center">
+        <canvas t-ref="canvas" width="200"/>
+      </div>
     </div>
     `;
   setup() {
