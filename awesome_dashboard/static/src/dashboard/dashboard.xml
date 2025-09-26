@@ -9,6 +9,7 @@
                 <button t-on-click="()=>this.getCrmLeads()" class="btn btn-primary">
                     Leads
                 </button>
+                <button t-on-click="()=>this.openDialog()" class="fa fa-cog" style="background: none; border: none;" />
             </t>
             <t t-slot="default">
                 <div class="p-2 d-flex flex-wrap">

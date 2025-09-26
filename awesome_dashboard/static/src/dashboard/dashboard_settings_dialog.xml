@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+    <t t-name="awesome_dashboard.DashboardSettingsDialog">
+        <Dialog title="'Dashboard Item Configuration'">
+            <p>Which card do you wish to see?</p>
+            <t t-foreach="props.items" t-as="item" t-key="item.id">
+                <div class="d-flex align-items-center gap-1">
+                    <input
+                        t-on-click="() => this.toggle(item.id)"
+                        t-att-checked="state.selected.has(item.id)"
+                        type="checkbox"/>
+                    <span>
+                        <t t-esc="item.description"/>
+                    </span>
+                </div>
+            </t>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary" t-on-click="apply">Apply</button>
+            </t>
+        </Dialog>
+    </t>
+</template>
